@@ -3,7 +3,7 @@
 # Created by Lubos Kuzma
 # ISS Program, SADT, SAIT
 # August 2022
-
+#64bit gcc default change
 
 if [ $# -lt 1 ]; then
 	echo "Usage:"
@@ -25,7 +25,7 @@ POSITIONAL_ARGS=()
 GDB=False
 OUTPUT_FILE=""
 VERBOSE=False
-BITS=False
+BITS=True
 QEMU=False
 BREAK="_start"
 RUN=False
@@ -95,13 +95,13 @@ if [ "$VERBOSE" == "True" ]; then
 	echo "	64 bit mode = $BITS" 
 	echo ""
 
-	echo "NASM started..."
+	echo "gcc started..."
 
 fi
 
 if [ "$BITS" == "True" ]; then
 
-	nasm -f elf64 $1 -o $OUTPUT_FILE.o && echo ""
+	gcc -f elf64 $1 -o $OUTPUT_FILE.o && echo ""
 
 
 elif [ "$BITS" == "False" ]; then
@@ -112,14 +112,14 @@ fi
 
 if [ "$VERBOSE" == "True" ]; then
 
-	echo "NASM finished"
+	echo "gcc finished"
 	echo "Linking ..."
 	
 fi
 
 if [ "$VERBOSE" == "True" ]; then
 
-	echo "NASM finished"
+	echo "gcc finished"
 	echo "Linking ..."
 fi
 
